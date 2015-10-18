@@ -1,4 +1,5 @@
 package org.numisoft.stringsarrays1;
+
 import java.util.Scanner;
 
 public class Main {
@@ -11,7 +12,7 @@ public class Main {
 		String text = scanner.nextLine();
 
 		System.out.print("Input symbol: ");
-		String replacement = scanner.next();
+		String replacement = scanner.nextLine();
 
 		System.out.println("Input index: ");
 		int index = scanner.nextInt();
@@ -19,9 +20,8 @@ public class Main {
 		String[] words = text.split("\\s");
 
 		for (int i = 0; i < words.length; i++) {
-			System.out.print("");
 
-			if (index < words[i].length()) {
+			if (index <= words[i].length()) {
 				String temp = "";
 				temp += words[i].substring(0, index - 1);
 				temp += replacement;
