@@ -10,7 +10,7 @@ public class Main {
 
 		productArray = populateArray();
 
-		/* Print array items */
+		/* Print available items */
 		for (Product p : productArray) {
 			System.out.println(p.UPC + " - " + p.name + " - " + p.manufacturer
 					+ " - " + p.expiration + " - " + p.price);
