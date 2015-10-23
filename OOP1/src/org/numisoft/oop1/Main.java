@@ -2,18 +2,23 @@ package org.numisoft.oop1;
 
 import java.util.Scanner;
 
+/* Class "Main" contains "main" method */
+
 public class Main {
 
+	/* Initialize array of product items */
 	static Product[] productArray = new Product[10];
 
+	/* Main method -- entry point */
 	public static void main(String[] args) {
 
 		productArray = populateArray();
 
 		/* Print available items */
 		for (Product p : productArray) {
-			System.out.println(p.UPC + " - " + p.name + " - " + p.manufacturer
-					+ " - " + p.expiration + " - " + p.price);
+			System.out.println(p.getUPC() + " - " + p.getName() + " - "
+					+ p.getManufacturer() + " - " + p.getExpiration() + " - "
+					+ p.getPrice());
 		}
 
 		/* Select items by product name */
@@ -40,7 +45,7 @@ public class Main {
 	public static Product[] populateArray() {
 		System.out.println("Products available:");
 		System.out.println("----------------");
-		productArray[0] = new Product(1, "Chocolate", "012345678", "Nestle",
+		productArray[0] = new Product(1, "Chocolate", "12345678", "Nestle",
 				4.50, "2015.12.12", 100);
 		productArray[1] = new Product(2, "Chocolate", "45877895", "Nestle",
 				5.50, "2015.11.20", 50);
@@ -69,10 +74,10 @@ public class Main {
 		System.out.println(name + ":");
 		System.out.println("----------------");
 		for (Product p : productArray) {
-			if (p.name.equalsIgnoreCase(name)) {
-				System.out.println(p.UPC + " - " + p.name + " - "
-						+ p.manufacturer + " - " + p.expiration + " - "
-						+ p.price);
+			if (p.getName().equalsIgnoreCase(name)) {
+				System.out.println(p.getUPC() + " - " + p.getName() + " - "
+						+ p.getManufacturer() + " - " + p.getExpiration()
+						+ " - " + p.getPrice());
 			}
 		}
 	}
@@ -83,10 +88,10 @@ public class Main {
 		System.out.println(name + " with price below " + price + ":");
 		System.out.println("----------------");
 		for (Product p : productArray) {
-			if (p.name.equalsIgnoreCase(name) && p.price <= price) {
-				System.out.println(p.UPC + " - " + p.name + " - "
-						+ p.manufacturer + " - " + p.expiration + " - "
-						+ p.price);
+			if (p.getName().equalsIgnoreCase(name) && p.getPrice() <= price) {
+				System.out.println(p.getUPC() + " - " + p.getName() + " - "
+						+ p.getManufacturer() + " - " + p.getExpiration()
+						+ " - " + p.getPrice());
 			}
 		}
 	}
