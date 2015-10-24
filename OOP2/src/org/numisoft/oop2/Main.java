@@ -23,13 +23,13 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
-			String input = scanner.next();
-			if (input.equalsIgnoreCase("t")) {
+			String inputLocomotive = scanner.next();
+			if (inputLocomotive.equalsIgnoreCase("t")) {
 				locomotive = new Teplovoz();
 				train.addLocomotive(locomotive);
 				break;
 			}
-			if (input.equalsIgnoreCase("e")) {
+			if (inputLocomotive.equalsIgnoreCase("e")) {
 				locomotive = new Elektrovoz();
 				train.addLocomotive(locomotive);
 				break;
@@ -46,8 +46,13 @@ public class Main {
 
 		scanner = new Scanner(System.in);
 
-		char[] cartSequence = scanner.nextLine().replaceAll("[^skpo]", "")
-				.toCharArray();
+		String inputCarts = scanner.nextLine().replaceAll("[^skpo]", "");
+
+		if (inputCarts.length() > train.getMaxCartNumber()) {
+			inputCarts = inputCarts.substring(0, train.getMaxCartNumber());
+		}
+
+		char[] cartSequence = inputCarts.toCharArray();
 
 		for (int i = 0; i < cartSequence.length; i++) {
 			switch (cartSequence[i]) {
