@@ -1,19 +1,33 @@
 package org.numisoft.oop2.locomotives;
 
+/**
+ * This abstract class describes general railroad locomotive
+ * */
+
 public abstract class Locomotive {
 
-	protected int maxCartNumber;
+	protected String locomotiveType;
+	protected int maxCarNumber;
 
-	public int getMaxCartNumber() {
-		return maxCartNumber;
+	public Locomotive(String locomotiveType, int maxCarNumber) {
+		this.locomotiveType = locomotiveType;
+		this.maxCarNumber = maxCarNumber;
 	}
 
-	public void setMaxCartNumber(int maxCartNumber) {
-		this.maxCartNumber = maxCartNumber;
+	public String getLocomotiveType() {
+		return locomotiveType;
 	}
 
-	public Locomotive(int maxCartNumber) {
-		this.maxCartNumber = maxCartNumber;
+	public void setLocomotiveType(String locomotiveType) {
+		this.locomotiveType = locomotiveType;
+	}
+
+	public int getMaxCarNumber() {
+		return maxCarNumber;
+	}
+
+	public void setMaxCarNumber(int maxCarNumber) {
+		this.maxCarNumber = maxCarNumber;
 	}
 
 }

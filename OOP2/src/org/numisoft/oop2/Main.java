@@ -1,86 +1,33 @@
 package org.numisoft.oop2;
 
-import java.util.Scanner;
-
-import org.numisoft.oop2.carts.Kupe;
-import org.numisoft.oop2.carts.Obschij;
-import org.numisoft.oop2.carts.Platzkart;
-import org.numisoft.oop2.carts.Sv;
-import org.numisoft.oop2.locomotives.Elektrovoz;
-import org.numisoft.oop2.locomotives.Locomotive;
-import org.numisoft.oop2.locomotives.Teplovoz;
-
+/**
+ * This class is entry point to application
+ * */
 public class Main {
 
 	public static void main(String[] args) {
 
 		Train train = new Train();
-		Locomotive locomotive;
 
-		System.out.println("Input locomotive: ");
-		System.out.println("t = Teplovoz  |  e = Electrovoz");
+		/* Adding locomotive to the train */
+		train.addLocomotive();
 
-		Scanner scanner = new Scanner(System.in);
+		/* Adding cars to the train */
+		train.addCars();
 
-		while (true) {
-			String inputLocomotive = scanner.next();
-			if (inputLocomotive.equalsIgnoreCase("t")) {
-				locomotive = new Teplovoz();
-				train.addLocomotive(locomotive);
-				break;
-			}
-			if (inputLocomotive.equalsIgnoreCase("e")) {
-				locomotive = new Elektrovoz();
-				train.addLocomotive(locomotive);
-				break;
-			}
-		}
-
-		System.out
-				.println("======================================================");
-		System.out.println("Input carts (max " + train.getMaxCartNumber()
-				+ " carts): ");
-		System.out
-				.println("s = Sv  |  k = Kupe  |  p = Platzkart  |  o = Obschij");
-		System.out.println("E.g.: sskkkpppooopppkk");
-
-		scanner = new Scanner(System.in);
-
-		String inputCarts = scanner.nextLine().replaceAll("[^skpo]", "");
-
-		if (inputCarts.length() > train.getMaxCartNumber()) {
-			inputCarts = inputCarts.substring(0, train.getMaxCartNumber());
-		}
-
-		char[] cartSequence = inputCarts.toCharArray();
-
-		for (int i = 0; i < cartSequence.length; i++) {
-			switch (cartSequence[i]) {
-			case 's':
-				System.out.println("Cart No." + (i + 1) + " is SV");
-				train.addCart(new Sv());
-				break;
-			case 'k':
-				System.out.println("Cart No." + (i + 1) + " is Kupe");
-				train.addCart(new Kupe());
-				break;
-			case 'p':
-				System.out.println("Cart No." + (i + 1) + " is Platzkart");
-				train.addCart(new Platzkart());
-				break;
-			case 'o':
-				System.out.println("Cart No." + (i + 1) + " is Obschij");
-				train.addCart(new Obschij());
-				break;
-			}
-		}
-		System.out
-				.println("======================================================");
-
-		System.out.println("Total passanger number is: "
+		/* Calculating total passenger number */
+		System.out.println("Total passenger number is: "
 				+ train.getTotalPassangerNumber());
+
+		/* Calculating total baggage number */
 		System.out.println("Total baggage number is: "
 				+ train.getTotalBaggageNumber());
+
+		/* Selecting cars by passenger number */
+		train.getCarsByPassangerNumber();
+
+		/* Sorting cars by comfort level */
+		train.sortCarsByComfortLevel();
 
 	}
 }

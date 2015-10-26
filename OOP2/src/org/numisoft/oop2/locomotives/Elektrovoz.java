@@ -1,11 +1,14 @@
 package org.numisoft.oop2.locomotives;
 
+/** This subclass describes 'Electrovoz' type of railroad locomotive */
+
 public class Elektrovoz extends Locomotive {
 
-	public static final int MAX_CART_NUMBER = 10;
+	public static final String LOCO_TYPE = "Electrovoz";
+	public static final int MAX_CAR_NUMBER = 10;
 
 	public Elektrovoz() {
-		super(MAX_CART_NUMBER);
+		super(LOCO_TYPE, MAX_CAR_NUMBER);
 	}
 
 }
