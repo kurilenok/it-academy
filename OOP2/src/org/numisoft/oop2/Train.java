@@ -109,6 +109,7 @@ public class Train implements Serializable {
 		System.out.println("------------------------");
 	}
 
+	/** This method lists all cars added to train */
 	public void showCars() {
 		for (Car c : this.cars) {
 			switch (c.getCartType()) {
@@ -174,6 +175,8 @@ public class Train implements Serializable {
 		int to = scanner.nextInt();
 
 		Iterator<Car> cartsIterator = cars.iterator();
+		System.out.println("------------------------");
+
 		System.out.println("Cars with number of passengers from " + from + " to " + to + ":");
 		while (cartsIterator.hasNext()) {
 			Car c = cartsIterator.next();
@@ -192,10 +195,10 @@ public class Train implements Serializable {
 		this.maxCarNumber = maxCarNumber;
 	}
 
-	/* This method writes train to file */
+	/** This method writes train to file */
 	public void writeTrain() {
 
-		System.out.println("Write this train to file?");
+		System.out.println("Write this train to file? Y/N");
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -221,12 +224,12 @@ public class Train implements Serializable {
 		}
 	}
 
-	/* This method reads train from file */
+	/** This method reads train from file */
 	public static Train readTrain() {
 
 		Train train = new Train();
 		System.out.println("------------------------");
-		System.out.println("Read train from file?");
+		System.out.println("Read train from file? Y/N");
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -255,6 +258,18 @@ public class Train implements Serializable {
 
 	public Locomotive getLocomotive() {
 		return locomotive;
+	}
+
+	@Override
+	public String toString() {
+
+		StringBuilder result = new StringBuilder();
+
+		result.append("This train consists of ");
+		result.append(this.getLocomotive().getLocomotiveType());
+		result.append(" and " + this.cars.size() + " cars");
+		return result.toString();
+
 	}
 
 }

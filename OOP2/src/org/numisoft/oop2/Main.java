@@ -40,6 +40,9 @@ public class Main {
 		} else {
 			System.out.println("Locomotive is " + train2.getLocomotive().getLocomotiveType());
 			train2.showCars();
+			System.out.println("-------------");
+			System.out.println(train2.toString());
+			System.out.println("Btw, message above is @Override toString()");
 		}
 	}
 
