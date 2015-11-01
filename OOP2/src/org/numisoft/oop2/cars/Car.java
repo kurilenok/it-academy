@@ -1,10 +1,12 @@
 package org.numisoft.oop2.cars;
 
+import java.io.Serializable;
+
 /**
  * This abstract class describes general passenger railroad car
  * */
 
-public abstract class Car implements Comparable<Car> {
+public abstract class Car implements Comparable<Car>, Serializable {
 
 	protected String cartType;
 	protected int passengerNumber;
@@ -13,8 +15,8 @@ public abstract class Car implements Comparable<Car> {
 	protected int cartNumber;
 
 	/* Constructor */
-	public Car(int cartNumber, String cartType, int passangerNumber,
-			int baggageNumber, int comfortLevel) {
+	public Car(int cartNumber, String cartType, int passangerNumber, int baggageNumber,
+			int comfortLevel) {
 		this.cartType = cartType;
 		this.cartNumber = cartNumber;
 		this.passengerNumber = passangerNumber;

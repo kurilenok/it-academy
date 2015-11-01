@@ -1,5 +1,11 @@
 package org.numisoft.oop2;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -19,7 +25,7 @@ import org.numisoft.oop2.locomotives.Teplovoz;
  * This class describes train that consists of locomotive and several passenger
  * cars
  * */
-public class Train {
+public class Train implements Serializable {
 
 	private Locomotive locomotive;
 	private List<Car> cars = new ArrayList<Car>();
@@ -49,8 +55,7 @@ public class Train {
 			}
 		}
 		setMaxCartNumber(locomotive.getMaxCarNumber());
-		System.out.println("Locomotive added: "
-				+ locomotive.getLocomotiveType());
+		System.out.println("Locomotive added: " + locomotive.getLocomotiveType());
 		System.out.println("------------------------");
 	}
 
@@ -62,8 +67,7 @@ public class Train {
 	public void addCars() {
 
 		System.out.println("Input cars, max " + this.getMaxCarNumber() + ": ");
-		System.out
-				.println("s = Sv  |  k = Kupe  |  p = Platzkart  |  o = Obschij");
+		System.out.println("s = Sv  |  k = Kupe  |  p = Platzkart  |  o = Obschij");
 		System.out.println("E.g.: sskkkpppooopppkk");
 		Scanner scanner = new Scanner(System.in);
 
@@ -76,6 +80,7 @@ public class Train {
 		char[] carSequence = inputCars.toCharArray();
 
 		if (carSequence.length > 0) {
+			System.out.println("------------------------");
 			System.out.println(carSequence.length + " passenger cars added: ");
 		} else {
 			System.out.println("Nothing to add!");
@@ -102,6 +107,25 @@ public class Train {
 			}
 		}
 		System.out.println("------------------------");
+	}
+
+	public void showCars() {
+		for (Car c : this.cars) {
+			switch (c.getCartType()) {
+			case "SV":
+				System.out.println("Car No." + c.getCarNumber() + " is SV");
+				break;
+			case "Kupe":
+				System.out.println("Car No." + c.getCarNumber() + " is Kupe");
+				break;
+			case "Platzkart":
+				System.out.println("Car No." + c.getCarNumber() + " is Platzkart");
+				break;
+			case "Obschij":
+				System.out.println("Car No." + c.getCarNumber() + " is Obschij");
+				break;
+			}
+		}
 	}
 
 	/**
@@ -132,9 +156,8 @@ public class Train {
 		System.out.println("Sorted by comfort level:");
 		Collections.sort(cars);
 		for (Car c : cars) {
-			System.out.println("Car No." + c.getCarNumber() + " is "
-					+ c.getCartType() + " = Comfort level "
-					+ c.getComfortLevel());
+			System.out.println("Car No." + c.getCarNumber() + " is " + c.getCartType()
+					+ " = Comfort level " + c.getComfortLevel());
 		}
 
 	}
@@ -151,14 +174,12 @@ public class Train {
 		int to = scanner.nextInt();
 
 		Iterator<Car> cartsIterator = cars.iterator();
-		System.out.println("Cars with number of passengers from " + from
-				+ " to " + to + ":");
+		System.out.println("Cars with number of passengers from " + from + " to " + to + ":");
 		while (cartsIterator.hasNext()) {
 			Car c = cartsIterator.next();
 			if (c.getPassengerNumber() >= from && c.getPassengerNumber() <= to) {
-				System.out.println("Cat No." + c.getCarNumber() + " is "
-						+ c.getCartType() + " = " + c.getPassengerNumber()
-						+ " passengers");
+				System.out.println("Cat No." + c.getCarNumber() + " is " + c.getCartType() + " = "
+						+ c.getPassengerNumber() + " passengers");
 			}
 		}
 	}
@@ -170,4 +191,70 @@ public class Train {
 	public void setMaxCartNumber(int maxCarNumber) {
 		this.maxCarNumber = maxCarNumber;
 	}
+
+	/* This method writes train to file */
+	public void writeTrain() {
+
+		System.out.println("Write this train to file?");
+
+		Scanner scanner = new Scanner(System.in);
+
+		while (true) {
+			String input = scanner.next();
+			if (input.equalsIgnoreCase("n")) {
+				break;
+			}
+			if (input.equalsIgnoreCase("y")) {
+				try {
+					FileOutputStream fos = new FileOutputStream("./train.ser");
+					ObjectOutputStream oos = new ObjectOutputStream(fos);
+					oos.writeObject(this);
+					oos.close();
+					fos.close();
+					System.out.println("Train was written to file");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+		}
+	}
+
+	/* This method reads train from file */
+	public static Train readTrain() {
+
+		Train train = new Train();
+		System.out.println("------------------------");
+		System.out.println("Read train from file?");
+
+		Scanner scanner = new Scanner(System.in);
+
+		while (true) {
+			String input = scanner.next();
+			if (input.equalsIgnoreCase("n")) {
+				break;
+			}
+			if (input.equalsIgnoreCase("y")) {
+				try {
+					FileInputStream fileIn = new FileInputStream("./train.ser");
+					ObjectInputStream in = new ObjectInputStream(fileIn);
+					train = (Train) in.readObject();
+					in.close();
+					fileIn.close();
+					System.out.println("------------------------");
+					System.out.println("Train from file:");
+				} catch (IOException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+				break;
+			}
+		}
+		return train;
+	}
+
+	public Locomotive getLocomotive() {
+		return locomotive;
+	}
+
 }

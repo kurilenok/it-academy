@@ -1,10 +1,12 @@
 package org.numisoft.oop2.locomotives;
 
+import java.io.Serializable;
+
 /**
  * This abstract class describes general railroad locomotive
  * */
 
-public abstract class Locomotive {
+public abstract class Locomotive implements Serializable {
 
 	protected String locomotiveType;
 	protected int maxCarNumber;
