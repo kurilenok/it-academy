@@ -1,0 +1,72 @@
+#
+# Strings for Train class
+#
+input_locomotive = Input locomotive:
+locomotive_types = t = Teplovoz  |  e = Electrovoz
+locomotive_added = Locomotive added:
+input_cars = Input cars, max 
+cars_types = s = Sv  |  k = Kupe  |  p = Platzkart  |  o = Obschij
+cars_example = E.g.: sskkkpppooopppkk
+cars_added = passenger cars added:
+cars_not_added = Nothing to add!
+car_number = Car No.
+car_is_SV = is SV
+car_is_kupe = is Kupe
+car_is_platzkart = is Platzkart
+car_is_obschij = is Obschij
+sort_by_comfort = Cars by comfort level:
+is = is
+comfort_level = - Comfort level
+input_min = Input MIN number of passengers per 1 car:
+input_max = Input MAX number of passengers per 1 car:
+cars_with = Cars with
+passengers = passengers
+write_to = Write this train to file? Y/N
+written = Train was written to file
+read_from = Read train from file? Y/N
+from_file = Train from file:
+train_consists = This train consists of
+and = and
+cars = cars
+
+#
+# String for Main class
+#
+select_language = Select language:
+english_russian = 1 = English  |  2 = Русский
+total_passengers = Total passenger number is: 
+total_baggage = Total baggage number is:
+locomotive_is = Locomotive is
+toString_message = Btw, message above is @Override toString()
+
+#
+# String for Elektrovoz class
+#
+elektrovoz = Elektrovoz
+
+#
+# String for Teplovoz class
+#
+teplovoz = Teplovoz
+
+#
+# String for SV class
+#
+sv = SV
+
+#
+# String for Kupe class
+#
+kupe = Kupe
+
+#
+# String for Platzkart class
+#
+platzkart = Platzkart
+
+#
+# String for Obschij class
+#
+obschij = Obschij
+
+

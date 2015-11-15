@@ -38,8 +38,8 @@ public class Train implements Serializable {
 	 * */
 	public void addLocomotive() {
 
-		System.out.println("Input locomotive: ");
-		System.out.println("t = Teplovoz  |  e = Electrovoz");
+		System.out.println(Main.rb.getString("input_locomotive"));
+		System.out.println(Main.rb.getString("locomotive_types"));
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -55,7 +55,9 @@ public class Train implements Serializable {
 			}
 		}
 		setMaxCartNumber(locomotive.getMaxCarNumber());
-		System.out.println("Locomotive added: " + locomotive.getLocomotiveType());
+
+		System.out.println(Main.rb.getString("locomotive_added") + " "
+				+ locomotive.getLocomotiveType());
 		System.out.println("------------------------");
 	}
 
@@ -66,9 +68,9 @@ public class Train implements Serializable {
 	 * */
 	public void addCars() {
 
-		System.out.println("Input cars, max " + this.getMaxCarNumber() + ": ");
-		System.out.println("s = Sv  |  k = Kupe  |  p = Platzkart  |  o = Obschij");
-		System.out.println("E.g.: sskkkpppooopppkk");
+		System.out.println(Main.rb.getString("input_cars") + this.getMaxCarNumber() + ": ");
+		System.out.println(Main.rb.getString("cars_types"));
+		System.out.println(Main.rb.getString("cars_example"));
 		Scanner scanner = new Scanner(System.in);
 
 		String inputCars = scanner.nextLine().replaceAll("[^skpo]", "");
@@ -81,27 +83,31 @@ public class Train implements Serializable {
 
 		if (carSequence.length > 0) {
 			System.out.println("------------------------");
-			System.out.println(carSequence.length + " passenger cars added: ");
+			System.out.println(carSequence.length + " " + Main.rb.getString("cars_added"));
 		} else {
-			System.out.println("Nothing to add!");
+			System.out.println(Main.rb.getString("cars_not_added"));
 		}
 
 		for (int i = 0; i < carSequence.length; i++) {
 			switch (carSequence[i]) {
 			case 's':
-				System.out.println("Car No." + (i + 1) + " is SV");
+				System.out.println(Main.rb.getString("car_number") + (i + 1) + " "
+						+ Main.rb.getString("car_is_SV"));
 				cars.add(new Sv(i + 1));
 				break;
 			case 'k':
-				System.out.println("Car No." + (i + 1) + " is Kupe");
+				System.out.println(Main.rb.getString("car_number") + (i + 1) + " "
+						+ Main.rb.getString("car_is_kupe"));
 				cars.add(new Kupe(i + 1));
 				break;
 			case 'p':
-				System.out.println("Car No." + (i + 1) + " is Platzkart");
+				System.out.println(Main.rb.getString("car_number") + (i + 1) + " "
+						+ Main.rb.getString("car_is_platzkart"));
 				cars.add(new Platzkart(i + 1));
 				break;
 			case 'o':
-				System.out.println("Car No." + (i + 1) + " is Obschij");
+				System.out.println(Main.rb.getString("car_number") + (i + 1) + " "
+						+ Main.rb.getString("car_is_obschij"));
 				cars.add(new Obschij(i + 1));
 				break;
 			}
@@ -114,16 +120,20 @@ public class Train implements Serializable {
 		for (Car c : this.cars) {
 			switch (c.getCartType()) {
 			case "SV":
-				System.out.println("Car No." + c.getCarNumber() + " is SV");
+				System.out.println(Main.rb.getString("car_number") + c.getCarNumber() + " "
+						+ Main.rb.getString("car_is_SV"));
 				break;
 			case "Kupe":
-				System.out.println("Car No." + c.getCarNumber() + " is Kupe");
+				System.out.println(Main.rb.getString("car_number") + c.getCarNumber() + " "
+						+ Main.rb.getString("car_is_kupe"));
 				break;
 			case "Platzkart":
-				System.out.println("Car No." + c.getCarNumber() + " is Platzkart");
+				System.out.println(Main.rb.getString("car_number") + c.getCarNumber() + " "
+						+ Main.rb.getString("car_is_platzkart"));
 				break;
 			case "Obschij":
-				System.out.println("Car No." + c.getCarNumber() + " is Obschij");
+				System.out.println(Main.rb.getString("car_number") + c.getCarNumber() + " "
+						+ Main.rb.getString("car_is_obschij"));
 				break;
 			}
 		}
@@ -154,11 +164,12 @@ public class Train implements Serializable {
 	 * */
 	public void sortCarsByComfortLevel() {
 		System.out.println("------------------------");
-		System.out.println("Sorted by comfort level:");
+		System.out.println(Main.rb.getString("sort_by_comfort"));
 		Collections.sort(cars);
 		for (Car c : cars) {
-			System.out.println("Car No." + c.getCarNumber() + " is " + c.getCartType()
-					+ " = Comfort level " + c.getComfortLevel());
+			System.out.println(Main.rb.getString("car_number") + c.getCarNumber() + " is "
+					+ c.getCartType() + " " + Main.rb.getString("comfort_level") + " "
+					+ c.getComfortLevel());
 		}
 
 	}
@@ -169,20 +180,22 @@ public class Train implements Serializable {
 	public void getCarsByPassangerNumber() {
 		System.out.println("------------------------");
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Input MIN number of passengers per 1 car: ");
+		System.out.println(Main.rb.getString("input_min"));
 		int from = scanner.nextInt();
-		System.out.println("Input MAX number of passengers per 1 car: ");
+		System.out.println(Main.rb.getString("input_max"));
 		int to = scanner.nextInt();
 
 		Iterator<Car> cartsIterator = cars.iterator();
 		System.out.println("------------------------");
 
-		System.out.println("Cars with number of passengers from " + from + " to " + to + ":");
+		System.out.println(Main.rb.getString("cars_with") + " " + from + "-" + to + " "
+				+ Main.rb.getString("passengers") + ":");
 		while (cartsIterator.hasNext()) {
 			Car c = cartsIterator.next();
 			if (c.getPassengerNumber() >= from && c.getPassengerNumber() <= to) {
-				System.out.println("Cat No." + c.getCarNumber() + " is " + c.getCartType() + " = "
-						+ c.getPassengerNumber() + " passengers");
+				System.out.println(Main.rb.getString("car_number") + c.getCarNumber() + " "
+						+ Main.rb.getString("is") + " " + c.getCartType() + " = "
+						+ c.getPassengerNumber() + " " + Main.rb.getString("passengers"));
 			}
 		}
 	}
@@ -198,7 +211,7 @@ public class Train implements Serializable {
 	/** This method writes train to file */
 	public void writeTrain() {
 
-		System.out.println("Write this train to file? Y/N");
+		System.out.println(Main.rb.getString("write_to"));
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -214,7 +227,7 @@ public class Train implements Serializable {
 					oos.writeObject(this);
 					oos.close();
 					fos.close();
-					System.out.println("Train was written to file");
+					System.out.println(Main.rb.getString("written"));
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -229,7 +242,7 @@ public class Train implements Serializable {
 
 		Train train = new Train();
 		System.out.println("------------------------");
-		System.out.println("Read train from file? Y/N");
+		System.out.println(Main.rb.getString("read_from"));
 
 		Scanner scanner = new Scanner(System.in);
 
@@ -246,7 +259,7 @@ public class Train implements Serializable {
 					in.close();
 					fileIn.close();
 					System.out.println("------------------------");
-					System.out.println("Train from file:");
+					System.out.println(Main.rb.getString("from_file"));
 				} catch (IOException | ClassNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -265,9 +278,10 @@ public class Train implements Serializable {
 
 		StringBuilder result = new StringBuilder();
 
-		result.append("This train consists of ");
-		result.append(this.getLocomotive().getLocomotiveType());
-		result.append(" and " + this.cars.size() + " cars");
+		result.append(Main.rb.getString("train_consists") + " ");
+		result.append(this.getLocomotive().getLocomotiveType() + " ");
+		result.append(Main.rb.getString("and") + " ");
+		result.append(this.cars.size() + " " + Main.rb.getString("cars"));
 		return result.toString();
 
 	}
