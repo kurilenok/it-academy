@@ -10,28 +10,28 @@ import java.util.Scanner;
 public class Main {
 
 	public static ResourceBundle rb;
+	public static Logger logger = Logger.getInstance();
 
 	public static void main(String[] args) {
 
+		/* Selecting locale */
 		System.out.println("Select language | Выберите язык:");
 		System.out.println("1 = English  |  2 = Русский");
-
 		Scanner scanner = new Scanner(System.in);
-
 		Locale l;
-
 		while (true) {
-			String inputLocomotive = scanner.next();
-			if (inputLocomotive.equalsIgnoreCase("1")) {
+			String selectLocale = scanner.next();
+			if (selectLocale.equalsIgnoreCase("1")) {
 				l = new Locale("en", "US");
+				logger.log("User selected EN locale");
 				break;
 			}
-			if (inputLocomotive.equalsIgnoreCase("2")) {
+			if (selectLocale.equalsIgnoreCase("2")) {
 				l = new Locale("ru", "RU");
+				logger.log("User selected RU locale");
 				break;
 			}
 		}
-
 		rb = ResourceBundle.getBundle("org.numisoft.oop2.i18n/strings", l);
 
 		Train train = new Train();

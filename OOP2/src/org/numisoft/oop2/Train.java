@@ -47,10 +47,12 @@ public class Train implements Serializable {
 			String inputLocomotive = scanner.next();
 			if (inputLocomotive.equalsIgnoreCase("t")) {
 				locomotive = new Teplovoz();
+				Main.logger.log("User added Teplovoz as locomotive");
 				break;
 			}
 			if (inputLocomotive.equalsIgnoreCase("e")) {
 				locomotive = new Elektrovoz();
+				Main.logger.log("User added Electrovoz as locomotive");
 				break;
 			}
 		}
@@ -84,8 +86,10 @@ public class Train implements Serializable {
 		if (carSequence.length > 0) {
 			System.out.println("------------------------");
 			System.out.println(carSequence.length + " " + Main.rb.getString("cars_added"));
+			Main.logger.log("User added the following cars: " + inputCars);
 		} else {
 			System.out.println(Main.rb.getString("cars_not_added"));
+			Main.logger.log("User added no cars");
 		}
 
 		for (int i = 0; i < carSequence.length; i++) {
@@ -190,6 +194,8 @@ public class Train implements Serializable {
 
 		System.out.println(Main.rb.getString("cars_with") + " " + from + "-" + to + " "
 				+ Main.rb.getString("passengers") + ":");
+
+		Main.logger.log("User selected cars with passenger number from " + from + " to " + to);
 		while (cartsIterator.hasNext()) {
 			Car c = cartsIterator.next();
 			if (c.getPassengerNumber() >= from && c.getPassengerNumber() <= to) {
@@ -218,6 +224,7 @@ public class Train implements Serializable {
 		while (true) {
 			String input = scanner.next();
 			if (input.equalsIgnoreCase("n")) {
+				Main.logger.log("User refused to serialize train to file");
 				break;
 			}
 			if (input.equalsIgnoreCase("y")) {
@@ -228,8 +235,8 @@ public class Train implements Serializable {
 					oos.close();
 					fos.close();
 					System.out.println(Main.rb.getString("written"));
+					Main.logger.log("User serialized train to file");
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				break;
@@ -249,6 +256,7 @@ public class Train implements Serializable {
 		while (true) {
 			String input = scanner.next();
 			if (input.equalsIgnoreCase("n")) {
+				Main.logger.log("User refused to deserialize train from file");
 				break;
 			}
 			if (input.equalsIgnoreCase("y")) {
@@ -260,6 +268,7 @@ public class Train implements Serializable {
 					fileIn.close();
 					System.out.println("------------------------");
 					System.out.println(Main.rb.getString("from_file"));
+					Main.logger.log("User deserialized train from file");
 				} catch (IOException | ClassNotFoundException e) {
 					e.printStackTrace();
 				}

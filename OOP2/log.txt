@@ -1,0 +1,6 @@
+2015/11/22 12:52:06 ->> User selected EN locale
+2015/11/22 12:52:07 ->> User added Electrovoz as locomotive
+2015/11/22 12:52:12 ->> User added the following cars: sskkppo
+2015/11/22 12:52:14 ->> User serialized train to file
+2015/11/22 12:52:18 ->> User selected cars with passenger number from 20 to 50
+2015/11/22 12:52:25 ->> User deserialized train from file
