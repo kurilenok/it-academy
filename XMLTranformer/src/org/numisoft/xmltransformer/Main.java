@@ -22,12 +22,12 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = null;
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = null;
 		Document doc = null;
 
 		try {
-			db = dbf.newDocumentBuilder();
+			builder = factory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
 		}
@@ -35,7 +35,7 @@ public class Main {
 		File file = new File("source.xml");
 
 		try {
-			doc = db.parse(file);
+			doc = builder.parse(file);
 		} catch (SAXException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

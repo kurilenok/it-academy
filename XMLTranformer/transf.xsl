@@ -11,35 +11,24 @@
 			</body>
 		</HTML>
 	</xsl:template>
-	
+
 	<xsl:template match="/studentList/student">
 		<tr>
-			
+			<xsl:apply-templates />
 		</tr>
 	</xsl:template>
-	
+
 	<xsl:template match="/studentList/student/firstName">
-		<td>
-			<xsl:value-of select="text()" />
-		</td>
+		<td><xsl:value-of select="text()" /></td>
 	</xsl:template>
-	
 	<xsl:template match="/studentList/student/lastName">
-		<td>
-			<xsl:value-of select="text()" />
-		</td>
+		<td><xsl:value-of select="text()" /></td>
 	</xsl:template>
-	
 	<xsl:template match="/studentList/student/age">
-		<td>
-			<xsl:value-of select="text()" />
-		</td>
+		<td><xsl:value-of select="text()" /></td>
 	</xsl:template>
-	
 	<xsl:template match="/studentList/student/faculty">
-		<td>
-			<xsl:value-of select="text()" />
-		</td>
+		<td><xsl:value-of select="text()" /></td>
 	</xsl:template>
-	
+
 </xsl:stylesheet>
