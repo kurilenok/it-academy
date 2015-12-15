@@ -32,7 +32,7 @@ public class Main {
 				System.out.println(", pages: " + result.getString(5));
 			}
 
-			System.out.println("-----------------------------");
+			System.out.println("--------------------------");
 			Statement statement = (Statement) connection.createStatement();
 			result = statement.executeQuery("SELECT SUM(price) from books");
 			while (result.next()) {

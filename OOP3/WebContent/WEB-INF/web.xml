@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+<servlet>
+	<servlet-name>Index</servlet-name>
+	<servlet-class>org.numisoft.oop3.IndexServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Index</servlet-name>
+	<url-pattern>/index</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>Unsubscribe</servlet-name>
+	<servlet-class>org.numisoft.oop3.UnsubscribeServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Unsubscribe</servlet-name>
+	<url-pattern>/unsubscribe</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>Subscribe</servlet-name>
+	<servlet-class>org.numisoft.oop3.SubscribeServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Subscribe</servlet-name>
+	<url-pattern>/subscribe</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>Login</servlet-name>
+	<servlet-class>org.numisoft.oop3.LoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Login</servlet-name>
+	<url-pattern>/login</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>Logout</servlet-name>
+	<servlet-class>org.numisoft.oop3.LogoutServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Logout</servlet-name>
+	<url-pattern>/logout</url-pattern>
+</servlet-mapping>
+</web-app>
