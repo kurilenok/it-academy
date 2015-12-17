@@ -27,9 +27,11 @@ public class LoginServlet extends HttpServlet {
 		if (id > 0) {
 
 			User user = udi.getUserById(DBHelper.getConnection(), id);
+
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
 			response.sendRedirect("/OOP3/index");
+
 		} else {
 			response.sendRedirect("/OOP3/error.jsp");
 		}

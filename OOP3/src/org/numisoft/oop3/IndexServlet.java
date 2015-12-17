@@ -27,23 +27,26 @@ public class IndexServlet extends HttpServlet {
 		request.setAttribute("periodicals", ps);
 
 		User user = new User();
-		// user.setFirst_name("Darth");
-		// user.setLast_name("Vader");
-		// HttpSession session = request.getSession(true);
-		// session.setAttribute("user", user);
-		// session.setAttribute("user_id", 1);
 
 		HttpSession session = request.getSession();
 		user = (User) session.getAttribute("user");
 		session.setAttribute("user_id", user.getId());
 
-		SubscriptionDaoImpl sdi = new SubscriptionDaoImpl();
-		List<Subscription> subscriptions = sdi
-				.getSubscriptionByUser(DBHelper.getConnection(), user);
-		request.setAttribute("subscriptions", subscriptions);
+		if (user.getRole_id() == 1) {
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("subscriptions.jsp");
-		dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
+			dispatcher.forward(request, response);
+
+		} else {
+
+			SubscriptionDaoImpl sdi = new SubscriptionDaoImpl();
+			List<Subscription> subscriptions = sdi.getSubscriptionByUser(DBHelper.getConnection(),
+					user);
+			request.setAttribute("subscriptions", subscriptions);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("subscriptions.jsp");
+			dispatcher.forward(request, response);
+		}
 
 	}
 }

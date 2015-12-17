@@ -25,6 +25,7 @@ public class UserDaoImpl implements UserDao {
 				user.setFirst_name(result.getString("first_name"));
 				user.setLast_name(result.getString("last_name"));
 				user.setUsername(result.getString("username"));
+				user.setRole_id(result.getInt("role_id"));
 			}
 
 			result.close();

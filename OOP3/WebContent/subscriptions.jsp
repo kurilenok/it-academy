@@ -42,9 +42,11 @@
         		<th>Price</th>
         		<th></th>
         	</tr>
+        	<c:set var="j" scope="page" value="0"/>
         	<c:forEach var="p" items="${requestScope.periodicals}"> 
             	<tr>
-            		<td><c:out value="${p.getId()}"/>
+            		<c:set var="j" value="${j + 1}" scope="page"/>
+            		<td><c:out value="${j}"/>
             		<td><c:out value="${p.getTitle()}"/>  
             		<td><c:out value="${p.getPrice()}"/>  
             		<td><a href="/OOP3/subscribe?id=${p.getId()}">Subscribe</a></td>          		            		

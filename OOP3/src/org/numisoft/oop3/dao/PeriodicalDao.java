@@ -11,4 +11,8 @@ public interface PeriodicalDao {
 
 	public List<Periodical> getAllPeriodicals(Connection connection);
 
+	public void addPeriodical(Connection connection, String title, int price);
+
+	public void deletePeriodical(Connection connection, int id);
+
 }
