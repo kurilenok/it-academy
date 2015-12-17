@@ -18,15 +18,23 @@ public class AddServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String priceString = request.getParameter("price");
 
-		if (title.equalsIgnoreCase("") || priceString.equalsIgnoreCase("")) {
+		if (title.equalsIgnoreCase("")) {
+			response.sendRedirect("/OOP3/index");
+		} else if (priceString.equalsIgnoreCase("")) {
+			response.sendRedirect("/OOP3/index");
+		} else {
+
+			int price = 0;
+			try {
+				price = Integer.parseInt(priceString);
+			} catch (NumberFormatException e) {
+
+			}
+			PeriodicalDaoImpl pdi = new PeriodicalDaoImpl();
+			pdi.addPeriodical(DBHelper.getConnection(), title, price);
+
 			response.sendRedirect("/OOP3/index");
 		}
-
-		int price = Integer.parseInt(priceString);
-		PeriodicalDaoImpl pdi = new PeriodicalDaoImpl();
-		pdi.addPeriodical(DBHelper.getConnection(), title, price);
-
-		response.sendRedirect("/OOP3/index");
 
 	}
 }
