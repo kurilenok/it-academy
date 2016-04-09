@@ -67,7 +67,6 @@ public class Main {
 			System.out.println("------------------------");
 			System.out.println("- Add comments -");
 		} else {
-			System.out.println("Sergey");
 			System.out.println(rb.getString("locomotive_is") + " "
 					+ train2.getLocomotive().getLocomotiveType());
 			train2.showCars();
