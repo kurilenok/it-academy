@@ -65,6 +65,7 @@ public class Main {
 
 		if (train2.getTotalPassangerNumber() == 0) {
 			System.out.println("------------------------");
+			System.out.println("- Add comments -");
 		} else {
 			System.out.println(rb.getString("locomotive_is") + " "
 					+ train2.getLocomotive().getLocomotiveType());
@@ -72,7 +73,7 @@ public class Main {
 			System.out.println("------------------------");
 			System.out.println(train2.toString());
 			System.out.println(rb.getString("toString_message"));
-			System.out.print("Все testing таки ста 2 в но брче");
+			System.out.print("Все таки строка 2, изменяли несколько раз");
 		}
 	}
 }
