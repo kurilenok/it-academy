@@ -66,7 +66,6 @@ public class Main {
 		if (train2.getTotalPassangerNumber() == 0) {
 			System.out.println("------------------------");
 		} else {
-			System.out.println("Sergey");
 			System.out.println(rb.getString("locomotive_is") + " "
 					+ train2.getLocomotive().getLocomotiveType());
 			train2.showCars();
