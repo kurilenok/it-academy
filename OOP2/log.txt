@@ -4,3 +4,9 @@
 2015/11/22 12:52:14 ->> User serialized train to file
 2015/11/22 12:52:18 ->> User selected cars with passenger number from 20 to 50
 2015/11/22 12:52:25 ->> User deserialized train from file
+2016/04/09 09:58:16 ->> User selected EN locale
+2016/04/09 09:58:18 ->> User added Teplovoz as locomotive
+2016/04/09 09:58:23 ->> User added the following cars: kppo
+2016/04/09 09:58:27 ->> User serialized train to file
+2016/04/09 09:58:33 ->> User selected cars with passenger number from 20 to 50
+2016/04/09 09:58:36 ->> User deserialized train from file
