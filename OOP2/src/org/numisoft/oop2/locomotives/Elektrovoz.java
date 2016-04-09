@@ -7,7 +7,7 @@ import org.numisoft.oop2.Main;
 public class Elektrovoz extends Locomotive {
 
 	public static String LOCO_TYPE = Main.rb.getString("elektrovoz");
-	public static final int MAX_CAR_NUMBER = 10;
+	public static final int MAX_CAR_NUMBER = 12;
 
 	public Elektrovoz() {
 		super(LOCO_TYPE, MAX_CAR_NUMBER);

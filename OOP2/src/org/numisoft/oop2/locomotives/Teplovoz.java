@@ -7,10 +7,11 @@ import org.numisoft.oop2.Main;
 public class Teplovoz extends Locomotive {
 
 	public static String LOCO_TYPE = Main.rb.getString("teplovoz");
-	public static final int MAX_CART_NUMBER = 15;
+	public static final int MAX_CART_NUMBER = 20;
 
 	public Teplovoz() {
 		super(LOCO_TYPE, MAX_CART_NUMBER);
+
 	}
 
 }
