@@ -65,7 +65,7 @@ public class Main {
 
 		if (train2.getTotalPassangerNumber() == 0) {
 			System.out.println("------------------------");
-			System.out.println("- Add comments - get null passanger -");
+			System.out.println("- Add comments -");
 		} else {
 			System.out.println(rb.getString("locomotive_is") + " "
 					+ train2.getLocomotive().getLocomotiveType());
