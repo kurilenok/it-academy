@@ -73,7 +73,7 @@ public class Main {
 			System.out.println("------------------------");
 			System.out.println(train2.toString());
 			System.out.println(rb.getString("toString_message"));
-			System.out.print("Дописал строку 2");
+			System.out.print("Все таки строка 2");
 		}
 	}
 }
